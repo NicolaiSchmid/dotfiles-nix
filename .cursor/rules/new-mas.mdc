@@ -1,0 +1,8 @@
+---
+description: use this to install apps from the mac app store
+globs: darwin/flake.nix
+alwaysApply: false
+---
+to install a mac app, you first need to find the correct app id. for that, run `mas search <app name>`. after running, print the selected app name & id once more.
+
+now add the new app at the bottom of the  `homebrew.masApps` section in `flake.nix`, afterwards prompt to run the `darwin-rebuild switch` command to run sync
