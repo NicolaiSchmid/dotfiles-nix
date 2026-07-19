@@ -186,12 +186,15 @@
                   };
 
                   home.packages = with pkgs; [
-                    pnpm
-                    yarn
+                    # nixpkgs Node 24.15/24.16 crashes in libuv on Darwin when
+                    # worker threads perform synchronous file I/O. Keep the
+                    # runtime and package-manager shebangs on unaffected Node 26.
+                    (pnpm.override { nodejs = nodejs_26; })
+                    (yarn.override { nodejs = nodejs_26; })
                     gh # GitHub CLI
                     t3code
                     codexDesktop
-                    nodejs_24 # Add LTS Node.js
+                    nodejs_26
                     go
                     gopls
                     delve
