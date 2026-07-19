@@ -467,6 +467,9 @@
                   "font-fira-code-nerd-font"
                 ];
                 brews = [
+                  # Local EAS iOS build toolchain.
+                  "fastlane"
+                  "cocoapods"
                   {
                     name = "mas";
                     args = [ "HEAD" ];
