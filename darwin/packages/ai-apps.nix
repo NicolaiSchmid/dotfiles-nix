@@ -2,10 +2,10 @@
 {
   codex = pkgs.stdenv.mkDerivation rec {
     pname = "codex";
-    version = "0.137.0";
+    version = "0.144.6";
     src = pkgs.fetchurl {
       url = "https://github.com/openai/codex/releases/download/rust-v${version}/codex-aarch64-apple-darwin.tar.gz";
-      sha256 = "sha256-Yo0ieLH6KkZ0UmNfL9Wq7umN5KlPKvBgMeR5DaaEQEY=";
+      sha256 = "sha256-AjWQ+Ci8lQesYRMu415008XTP7W6Phyk/C4BOi9xo9c=";
     };
     unpackPhase = "tar -xzf $src";
     installPhase = ''
@@ -17,10 +17,10 @@
 
   opencode = pkgs.stdenv.mkDerivation rec {
     pname = "opencode";
-    version = "1.16.0";
+    version = "1.18.4";
     src = pkgs.fetchurl {
       url = "https://github.com/anomalyco/opencode/releases/download/v${version}/opencode-darwin-arm64.zip";
-      sha256 = "sha256-N7xrybVN59/K70DxnfgiJ23fFCrzijpzIl7stXZ+nyY=";
+      sha256 = "sha256-BPuIG2MrMjxxLf2m3LvG/Oc2OU8HunYXblLWZlkl1OY=";
     };
     nativeBuildInputs = [ pkgs.unzip ];
     unpackPhase = "unzip $src";
@@ -33,10 +33,10 @@
 
   claude-code = pkgs.stdenv.mkDerivation rec {
     pname = "claude-code";
-    version = "2.1.170";
+    version = "2.1.216";
     src = pkgs.fetchurl {
       url = "https://downloads.claude.ai/claude-code-releases/${version}/darwin-arm64/claude";
-      sha256 = "sha256-6QNkbYt6MYgqgOzSdWmifYrFezcIdF80lwljLIQRf98=";
+      sha256 = "sha256-0BtJIQ1y7L4neiZl0QS6zM3fLSIYW+mURtKSng7fxI0=";
     };
     dontUnpack = true;
     installPhase = ''
