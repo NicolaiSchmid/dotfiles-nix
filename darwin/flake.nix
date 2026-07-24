@@ -509,14 +509,17 @@
               system.activationScripts.homebrew.text = lib.mkForce ''
                 echo >&2 "Homebrew bundle..."
                 if [ -f "${config.homebrew.prefix}/bin/brew" ]; then
-                  PATH="${config.homebrew.prefix}/bin:${lib.makeBinPath [ pkgs.mas ]}:$PATH" \
-                  sudo \
-                    --preserve-env=PATH \
-                    --user=${lib.escapeShellArg config.homebrew.user} \
-                    --set-home \
-                    env \
-                    HOMEBREW_NO_INSTALL_FROM_API=1 \
-                    ${config.homebrew.onActivation.brewBundleCmd}
+                  if ! PATH="${config.homebrew.prefix}/bin:${lib.makeBinPath [ pkgs.mas ]}:$PATH" \
+                    sudo \
+                      --preserve-env=PATH \
+                      --user=${lib.escapeShellArg config.homebrew.user} \
+                      --set-home \
+                      env \
+                      HOMEBREW_NO_AUTO_UPDATE=1 \
+                      HOMEBREW_NO_INSTALL_FROM_API=1 \
+                      ${config.homebrew.onActivation.brewBundleCmd}; then
+                    echo -e "\e[1;33mwarning: brew bundle failed; continuing darwin activation\e[0m" >&2
+                  fi
 
                   if [ -e "${config.homebrew.prefix}/bin/codex" ]; then
                     /usr/bin/xattr -d com.apple.quarantine "${config.homebrew.prefix}/bin/codex" 2>/dev/null || true
