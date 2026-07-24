@@ -3,16 +3,16 @@
     "brew-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1778427648,
-        "narHash": "sha256-pt9KaDGsMyYWB9JeHs4XGHs870f1lOZe3vx9LpVIhUE=",
+        "lastModified": 1784558651,
+        "narHash": "sha256-woXJ1ATKpSYRWCy46TQJjmm9XzAeZVEZw9xDfVG9NYI=",
         "owner": "Homebrew",
         "repo": "brew",
-        "rev": "6f293daa9f9f5832e13b497976335e90509886d7",
+        "rev": "b48c7994b5f0eed7bef532efa63cb4e4f763887a",
         "type": "github"
       },
       "original": {
         "owner": "Homebrew",
-        "ref": "5.1.11",
+        "ref": "6.0.12",
         "repo": "brew",
         "type": "github"
       }
@@ -93,11 +93,11 @@
     "homebrew-anomalyco-tap": {
       "flake": false,
       "locked": {
-        "lastModified": 1780054502,
-        "narHash": "sha256-To2+6+tokUaCgmQLUAxjQSVKi8gUZOb9DQ78BD1etoY=",
+        "lastModified": 1784561157,
+        "narHash": "sha256-4zG0MsVOgUITei3z2dGg6Z09rFhDVLFDGv0ASFgAhuk=",
         "owner": "anomalyco",
         "repo": "homebrew-tap",
-        "rev": "462673ed9e7dbc358254f2b7bb74e37d60e797ba",
+        "rev": "23f794c15e2e7a277ebc68f219449337cb2f5acc",
         "type": "github"
       },
       "original": {
@@ -125,11 +125,11 @@
     "homebrew-steipete-tap": {
       "flake": false,
       "locked": {
-        "lastModified": 1780006691,
-        "narHash": "sha256-sdiQ5FFIAMwEz4enMwmMzmVpP79AelpqWE2J1mZGR+I=",
+        "lastModified": 1784831732,
+        "narHash": "sha256-Gy/+j7eyoctNXCZTbCTJwhAfFN4DnzDoPGI5AqLlMgo=",
         "owner": "steipete",
         "repo": "homebrew-tap",
-        "rev": "d34a94fd8291c2666c2fd0a8a2d7cf96eed87a91",
+        "rev": "986e7d59be28c2b59ea1f5fdfb5ce3a7c3d07bd8",
         "type": "github"
       },
       "original": {
@@ -143,11 +143,11 @@
         "brew-src": "brew-src"
       },
       "locked": {
-        "lastModified": 1778851564,
-        "narHash": "sha256-p8wzcnpB2Iys+QzAKM9/Eyw/pUyqCO3sw/NCnDH4dTE=",
+        "lastModified": 1784159664,
+        "narHash": "sha256-I/B6YoRLImHEqNWh8bs+tPjEDeteACeFhcLyoSMo1GE=",
         "owner": "zhaofengli",
         "repo": "nix-homebrew",
-        "rev": "b3a87b4793205cc111f3c61e25e018ffac3b8039",
+        "rev": "842eeb863ecca0eeb463f7a814cdc51e1d925776",
         "type": "github"
       },
       "original": {
