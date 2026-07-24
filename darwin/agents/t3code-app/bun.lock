@@ -4,7 +4,7 @@
   "workspaces": {
     "": {
       "dependencies": {
-        "t3": "0.0.28",
+        "t3": "0.0.29-nightly.20260724.891",
       },
     },
   },
@@ -405,7 +405,7 @@
 
     "stringify-entities": ["stringify-entities@4.0.4", "", { "dependencies": { "character-entities-html4": "^2.0.0", "character-entities-legacy": "^3.0.0" } }, "sha512-IwfBptatlO+QCJUo19AqvrPNqlVMpW9YEL2LIVY+Rpv2qsjCGxaDLNRgeGsQWJhfItebuJhsGSLjaBbNSQ+ieg=="],
 
-    "t3": ["t3@0.0.28", "", { "dependencies": { "@anthropic-ai/claude-agent-sdk": "^0.3.170", "@effect/platform-bun": "4.0.0-beta.78", "@effect/platform-node": "4.0.0-beta.78", "@effect/platform-node-shared": "4.0.0-beta.78", "@effect/sql-sqlite-bun": "4.0.0-beta.78", "@ff-labs/fff-node": "0.9.4", "@opencode-ai/sdk": "^1.3.15", "@pierre/diffs": "1.3.0-beta.5", "effect": "4.0.0-beta.78", "node-pty": "^1.1.0" }, "bin": { "t3": "dist/bin.mjs" } }, "sha512-IitsK0GNHcFmiuJVRDHR7SifhUKt4UVWnoVoJ+wcjqZDh+EHsEL+NKU1ia+WSWil5EYIxSG1KZzbYDxm6pX+sA=="],
+    "t3": ["t3@0.0.29-nightly.20260724.891", "", { "dependencies": { "@anthropic-ai/claude-agent-sdk": "^0.3.170", "@effect/platform-bun": "4.0.0-beta.78", "@effect/platform-node": "4.0.0-beta.78", "@effect/platform-node-shared": "4.0.0-beta.78", "@effect/sql-sqlite-bun": "4.0.0-beta.78", "@ff-labs/fff-node": "0.9.4", "@opencode-ai/sdk": "^1.3.15", "@pierre/diffs": "1.3.0-beta.5", "effect": "4.0.0-beta.78", "node-pty": "^1.1.0", "yaml": "^2.9.0" }, "bin": { "t3": "./dist/bin.mjs" } }, "sha512-z5I9b3GZIdi2UTpnQJhUYrEe0mAEzYUgo8Ym7lEegw/NNPEzK+dTUohyl+GGiceAPbPE/xVsTar4Vlc+lF791Q=="],
 
     "toidentifier": ["toidentifier@1.0.1", "", {}, "sha512-o5sSPKEkg/DIQNmH43V0/uerLrpzVedkUh8tGNvaeXpfpuwjKenlSox/2O/BTlZUtEe+JG7s5YhEz608PlAHRA=="],
 

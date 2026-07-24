@@ -93,6 +93,7 @@
                 codex
                 opencode
                 t3code
+                t3codeNightly
                 codexDesktop
                 ;
             in
@@ -193,6 +194,7 @@
                     (yarn.override { nodejs = nodejs_26; })
                     gh # GitHub CLI
                     t3code
+                    t3codeNightly
                     codexDesktop
                     nodejs_26
                     go
@@ -368,6 +370,10 @@
                   home.file = {
                     "Applications/T3 Code.app" = {
                       source = "${t3code}/Applications/T3 Code.app";
+                    };
+
+                    "Applications/T3 Code Nightly.app" = {
+                      source = "${t3codeNightly}/Applications/T3 Code Nightly.app";
                     };
 
                     "Applications/Codex.app" = {

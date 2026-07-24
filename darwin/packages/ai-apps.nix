@@ -65,6 +65,26 @@
     '';
   };
 
+  t3codeNightly = pkgs.stdenv.mkDerivation rec {
+    pname = "t3code-nightly";
+    version = "0.0.29-nightly.20260724.891";
+    src = pkgs.fetchurl {
+      url = "https://github.com/pingdotgg/t3code/releases/download/v${version}/T3-Code-${version}-arm64.zip";
+      sha256 = "sha256-Rbm3E7htzCMzjULaGRVOM94/2uz8Zzt7wJzorfyJu7A=";
+    };
+    nativeBuildInputs = [
+      pkgs.unzip
+      pkgs.makeWrapper
+    ];
+    unpackPhase = "unzip $src";
+    installPhase = ''
+      mkdir -p "$out/Applications" "$out/bin"
+      cp -R "T3 Code (Nightly).app" "$out/Applications/T3 Code Nightly.app"
+      chmod +x "$out/Applications/T3 Code Nightly.app/Contents/MacOS/T3 Code (Nightly)"
+      makeWrapper "$out/Applications/T3 Code Nightly.app/Contents/MacOS/T3 Code (Nightly)" "$out/bin/t3code-nightly"
+    '';
+  };
+
   codexDesktop = pkgs.stdenv.mkDerivation rec {
     pname = "codex-desktop";
     version = "26.527.31326";
