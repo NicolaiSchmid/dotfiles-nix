@@ -33,10 +33,10 @@
 
   claude-code = pkgs.stdenv.mkDerivation rec {
     pname = "claude-code";
-    version = "2.1.216";
+    version = "2.1.219";
     src = pkgs.fetchurl {
       url = "https://downloads.claude.ai/claude-code-releases/${version}/darwin-arm64/claude";
-      sha256 = "sha256-0BtJIQ1y7L4neiZl0QS6zM3fLSIYW+mURtKSng7fxI0=";
+      sha256 = "sha256-qOgG+q76xTx6DyZSPYpFxg2+80B7FO+ZDHV2XQj+vII=";
     };
     dontUnpack = true;
     installPhase = ''
@@ -56,6 +56,8 @@
       pkgs.unzip
       pkgs.makeWrapper
     ];
+    dontStrip = true;
+    dontFixup = true;
     unpackPhase = "unzip $src";
     installPhase = ''
       mkdir -p "$out/Applications" "$out/bin"
@@ -67,15 +69,17 @@
 
   t3codeNightly = pkgs.stdenv.mkDerivation rec {
     pname = "t3code-nightly";
-    version = "0.0.29-nightly.20260724.891";
+    version = "0.0.29-nightly.20260724.896";
     src = pkgs.fetchurl {
       url = "https://github.com/pingdotgg/t3code/releases/download/v${version}/T3-Code-${version}-arm64.zip";
-      sha256 = "sha256-Rbm3E7htzCMzjULaGRVOM94/2uz8Zzt7wJzorfyJu7A=";
+      sha256 = "sha256-vqvCUtzztbXRHYlAhPFkxEubOis6rYBSYOYbko2ne70=";
     };
     nativeBuildInputs = [
       pkgs.unzip
       pkgs.makeWrapper
     ];
+    dontStrip = true;
+    dontFixup = true;
     unpackPhase = "unzip $src";
     installPhase = ''
       mkdir -p "$out/Applications" "$out/bin"
