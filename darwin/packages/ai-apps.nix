@@ -69,10 +69,10 @@
 
   t3codeNightly = pkgs.stdenv.mkDerivation rec {
     pname = "t3code-nightly";
-    version = "0.0.29-nightly.20260724.896";
+    version = "0.0.30-nightly.20260728.932";
     src = pkgs.fetchurl {
       url = "https://github.com/pingdotgg/t3code/releases/download/v${version}/T3-Code-${version}-arm64.zip";
-      sha256 = "sha256-vqvCUtzztbXRHYlAhPFkxEubOis6rYBSYOYbko2ne70=";
+      sha256 = "sha256-I1LatiLph+h2JGehnr5B7L2mPeOEqqJIdgnytb2HQzQ=";
     };
     nativeBuildInputs = [
       pkgs.unzip
