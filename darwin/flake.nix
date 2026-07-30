@@ -503,9 +503,9 @@
                   "ripgrep"
                   "fd"
                 ];
-                masApps = {
-                  "AusweisApp" = 948660805;
-                };
+                # `mas install` currently fails during brew bundle even for already installed apps.
+                # Keep the existing Apple Silicon AusweisApp install unmanaged until MAS activation is fixed.
+                masApps = { };
               };
 
               system.activationScripts.homebrew.text = lib.mkForce ''
