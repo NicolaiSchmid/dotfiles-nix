@@ -503,8 +503,9 @@
                   "ripgrep"
                   "fd"
                 ];
-                # `mas install` currently fails during brew bundle even for already installed apps.
-                masApps = { };
+                masApps = {
+                  "AusweisApp" = 948660805;
+                };
               };
 
               system.activationScripts.homebrew.text = lib.mkForce ''
