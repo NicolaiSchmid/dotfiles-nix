@@ -393,6 +393,12 @@
                     ".aliases" = {
                       text = builtins.readFile "${inputs.dotfiles}/.aliases";
                     };
+                    ".codex/AGENTS.md" = {
+                      source = ./agents/global-agents.md;
+                    };
+                    ".claude/CLAUDE.md" = {
+                      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.codex/AGENTS.md";
+                    };
                     ".config/nvim" = {
                       source = inputs.nvimconfig;
                       recursive = true;
