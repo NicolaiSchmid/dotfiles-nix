@@ -1,7 +1,7 @@
 # Shared home-manager shell config — extracted from the laptop flake so the VM
 # uses the *same* zsh setup (functions, prompt, git). Imported for both nicolai
 # (the agent user) and root, so the shell is consistent however you ssh in.
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 let
   # Drop-in `gh` wrapper: intercepts ONLY t3's per-branch PR-status call
   # (`gh pr list --head <b> --json <fields>`) and serves it from a per-repo
@@ -76,6 +76,9 @@ in
 
   # Aliases (vendored from the laptop's dotfiles; ll uses eza, which is installed).
   home.file.".aliases".source = ./aliases;
+  home.file.".codex/AGENTS.md".source = ./global-agents.md;
+  home.file.".claude/CLAUDE.md".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.codex/AGENTS.md";
 
   home.sessionVariables.HISTCONTROL = "ignorespace";
 
