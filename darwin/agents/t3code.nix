@@ -3,7 +3,12 @@
 # committed bun.lock (./t3code-app). The agent CLIs (claude, codex) and the dev
 # toolchain come from nix and are on the service PATH, so agents can "do things"
 # with the full VM toolchain. State lives on the virtiofs-backed state dir.
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   stateDir = "/srv/agents-state/t3code";
   appDir = "${stateDir}/app";
@@ -31,6 +36,7 @@ in
         tailscale
         claude-code
         codex
+        opencode
         git
         coreutils
       ])

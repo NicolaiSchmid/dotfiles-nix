@@ -2,10 +2,10 @@
 {
   codex = pkgs.stdenv.mkDerivation rec {
     pname = "codex";
-    version = "0.144.6";
+    version = "0.149.1";
     src = pkgs.fetchurl {
       url = "https://github.com/openai/codex/releases/download/rust-v${version}/codex-aarch64-apple-darwin.tar.gz";
-      sha256 = "sha256-AjWQ+Ci8lQesYRMu415008XTP7W6Phyk/C4BOi9xo9c=";
+      sha256 = "sha256-7WD0dcbdpgRMLAD9fzMnPMPz+YkAzNEgS/3y/pNfNAU=";
     };
     unpackPhase = "tar -xzf $src";
     installPhase = ''
@@ -17,10 +17,10 @@
 
   opencode = pkgs.stdenv.mkDerivation rec {
     pname = "opencode";
-    version = "1.18.4";
+    version = "1.18.23";
     src = pkgs.fetchurl {
       url = "https://github.com/anomalyco/opencode/releases/download/v${version}/opencode-darwin-arm64.zip";
-      sha256 = "sha256-BPuIG2MrMjxxLf2m3LvG/Oc2OU8HunYXblLWZlkl1OY=";
+      sha256 = "sha256-NzzzZnODbyzohHKVoLss0kR9A8dptE2EGFkWvUcbQnQ=";
     };
     nativeBuildInputs = [ pkgs.unzip ];
     unpackPhase = "unzip $src";
@@ -33,10 +33,10 @@
 
   claude-code = pkgs.stdenv.mkDerivation rec {
     pname = "claude-code";
-    version = "2.1.219";
+    version = "2.1.246";
     src = pkgs.fetchurl {
       url = "https://downloads.claude.ai/claude-code-releases/${version}/darwin-arm64/claude";
-      sha256 = "sha256-qOgG+q76xTx6DyZSPYpFxg2+80B7FO+ZDHV2XQj+vII=";
+      sha256 = "sha256-ewnwHLdqOODjp8R8XWmNOCFipf8mU4/HeGg3cMr5IYs=";
     };
     dontUnpack = true;
     installPhase = ''
@@ -69,10 +69,10 @@
 
   t3codeNightly = pkgs.stdenv.mkDerivation rec {
     pname = "t3code-nightly";
-    version = "0.0.34-nightly.20260810.1059";
+    version = "0.0.35-nightly.20260826.1194";
     src = pkgs.fetchurl {
       url = "https://github.com/pingdotgg/t3code/releases/download/v${version}/T3-Code-${version}-arm64.zip";
-      sha256 = "sha256-/1oBC2uTnh4XGxz1UfYEPmBjavXRl3CESWRotri05eg=";
+      sha256 = "sha256-pHEvhYUf7mzkcZ/OQTjZ2y8rlwZ67i+QnTf1NguDcw4=";
     };
     nativeBuildInputs = [
       pkgs.unzip
