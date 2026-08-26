@@ -261,11 +261,23 @@
 
                   programs.zsh = {
                     enable = true;
+                    profileExtra = ''
+                      # Prefer the declaratively pinned Nix toolchain over
+                      # unmanaged Homebrew binaries with the same names.
+                      export PATH="/run/current-system/sw/bin:$PATH"
+
+                      # OrbStack command-line tools and shell integration.
+                      source "$HOME/.orbstack/shell/init.zsh" 2>/dev/null || true
+                    '';
                     autosuggestion.enable = true;
                     enableCompletion = false; # We use cached compinit below
                     syntaxHighlighting.enable = true;
 
                     initContent = ''
+                      # /etc/zshrc adds Homebrew after .zprofile, so restore the
+                      # Nix toolchain precedence for interactive shells here.
+                      export PATH="/run/current-system/sw/bin:$PATH"
+
                       # Cached compinit - only rebuild once per day
                       autoload -Uz compinit
                       if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
