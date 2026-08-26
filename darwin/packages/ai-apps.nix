@@ -7,11 +7,19 @@
       url = "https://github.com/openai/codex/releases/download/rust-v${version}/codex-aarch64-apple-darwin.tar.gz";
       sha256 = "sha256-7WD0dcbdpgRMLAD9fzMnPMPz+YkAzNEgS/3y/pNfNAU=";
     };
-    unpackPhase = "tar -xzf $src";
+    codeModeHostSrc = pkgs.fetchurl {
+      url = "https://github.com/openai/codex/releases/download/rust-v${version}/codex-code-mode-host-aarch64-apple-darwin.tar.gz";
+      sha256 = "sha256-quHAyUWXAKLol62t1kc1EUCueTOtc72NOvZQXGmk8/0=";
+    };
+    unpackPhase = ''
+      tar -xzf "$src"
+      tar -xzf "$codeModeHostSrc"
+    '';
     installPhase = ''
       mkdir -p "$out/bin"
       cp codex-aarch64-apple-darwin "$out/bin/codex"
-      chmod +x "$out/bin/codex"
+      cp codex-code-mode-host-aarch64-apple-darwin "$out/bin/codex-code-mode-host"
+      chmod +x "$out/bin/codex" "$out/bin/codex-code-mode-host"
     '';
   };
 
@@ -69,10 +77,10 @@
 
   t3codeNightly = pkgs.stdenv.mkDerivation rec {
     pname = "t3code-nightly";
-    version = "0.0.35-nightly.20260826.1194";
+    version = "0.0.35-nightly.20260826.1195";
     src = pkgs.fetchurl {
       url = "https://github.com/pingdotgg/t3code/releases/download/v${version}/T3-Code-${version}-arm64.zip";
-      sha256 = "sha256-pHEvhYUf7mzkcZ/OQTjZ2y8rlwZ67i+QnTf1NguDcw4=";
+      sha256 = "sha256-s2qUTajx7cQzsQmLEETBmG14yFqN5rh8bhdrfjkWqqk=";
     };
     nativeBuildInputs = [
       pkgs.unzip
