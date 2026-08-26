@@ -257,7 +257,6 @@
                   home.sessionPath = [
                     "$HOME/bin"
                     "$HOME/.cargo/bin"
-                    "/opt/homebrew/bin"
                   ];
 
                   programs.zsh = {
@@ -523,9 +522,6 @@
                     HOMEBREW_NO_INSTALL_FROM_API=1 \
                     ${config.homebrew.onActivation.brewBundleCmd}
 
-                  if [ -e "${config.homebrew.prefix}/bin/codex" ]; then
-                    /usr/bin/xattr -d com.apple.quarantine "${config.homebrew.prefix}/bin/codex" 2>/dev/null || true
-                  fi
                 else
                   echo -e "\e[1;31merror: Homebrew is not installed, skipping...\e[0m" >&2
                 fi
