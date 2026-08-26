@@ -531,7 +531,6 @@
                     --set-home \
                     env \
                     HOMEBREW_NO_AUTO_UPDATE=1 \
-                    HOMEBREW_NO_INSTALL_FROM_API=1 \
                     ${config.homebrew.onActivation.brewBundleCmd}
 
                 else
