@@ -7,11 +7,19 @@
       url = "https://github.com/openai/codex/releases/download/rust-v${version}/codex-aarch64-apple-darwin.tar.gz";
       sha256 = "sha256-jd3h/PXJhC6bqgnHwQgIi7IqOf64bkNE5F3AmGdkudc=";
     };
-    unpackPhase = "tar -xzf $src";
+    codeModeHostSrc = pkgs.fetchurl {
+      url = "https://github.com/openai/codex/releases/download/rust-v${version}/codex-code-mode-host-aarch64-apple-darwin.tar.gz";
+      sha256 = "sha256-mx3dyz41yMVFzH6hhYoH9+HFT/jlmrJmk634l/uzU2M=";
+    };
+    unpackPhase = ''
+      tar -xzf "$src"
+      tar -xzf "$codeModeHostSrc"
+    '';
     installPhase = ''
       mkdir -p "$out/bin"
       cp codex-aarch64-apple-darwin "$out/bin/codex"
-      chmod +x "$out/bin/codex"
+      cp codex-code-mode-host-aarch64-apple-darwin "$out/bin/codex-code-mode-host"
+      chmod +x "$out/bin/codex" "$out/bin/codex-code-mode-host"
     '';
   };
 
