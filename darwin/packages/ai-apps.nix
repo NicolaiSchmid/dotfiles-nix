@@ -2,33 +2,25 @@
 {
   codex = pkgs.stdenv.mkDerivation rec {
     pname = "codex";
-    version = "0.149.1";
+    version = "0.144.6";
     src = pkgs.fetchurl {
       url = "https://github.com/openai/codex/releases/download/rust-v${version}/codex-aarch64-apple-darwin.tar.gz";
-      sha256 = "sha256-7WD0dcbdpgRMLAD9fzMnPMPz+YkAzNEgS/3y/pNfNAU=";
+      sha256 = "sha256-AjWQ+Ci8lQesYRMu415008XTP7W6Phyk/C4BOi9xo9c=";
     };
-    codeModeHostSrc = pkgs.fetchurl {
-      url = "https://github.com/openai/codex/releases/download/rust-v${version}/codex-code-mode-host-aarch64-apple-darwin.tar.gz";
-      sha256 = "sha256-quHAyUWXAKLol62t1kc1EUCueTOtc72NOvZQXGmk8/0=";
-    };
-    unpackPhase = ''
-      tar -xzf "$src"
-      tar -xzf "$codeModeHostSrc"
-    '';
+    unpackPhase = "tar -xzf $src";
     installPhase = ''
       mkdir -p "$out/bin"
       cp codex-aarch64-apple-darwin "$out/bin/codex"
-      cp codex-code-mode-host-aarch64-apple-darwin "$out/bin/codex-code-mode-host"
-      chmod +x "$out/bin/codex" "$out/bin/codex-code-mode-host"
+      chmod +x "$out/bin/codex"
     '';
   };
 
   opencode = pkgs.stdenv.mkDerivation rec {
     pname = "opencode";
-    version = "1.18.23";
+    version = "1.18.4";
     src = pkgs.fetchurl {
       url = "https://github.com/anomalyco/opencode/releases/download/v${version}/opencode-darwin-arm64.zip";
-      sha256 = "sha256-NzzzZnODbyzohHKVoLss0kR9A8dptE2EGFkWvUcbQnQ=";
+      sha256 = "sha256-BPuIG2MrMjxxLf2m3LvG/Oc2OU8HunYXblLWZlkl1OY=";
     };
     nativeBuildInputs = [ pkgs.unzip ];
     unpackPhase = "unzip $src";
@@ -41,10 +33,10 @@
 
   claude-code = pkgs.stdenv.mkDerivation rec {
     pname = "claude-code";
-    version = "2.1.246";
+    version = "2.1.219";
     src = pkgs.fetchurl {
       url = "https://downloads.claude.ai/claude-code-releases/${version}/darwin-arm64/claude";
-      sha256 = "sha256-ewnwHLdqOODjp8R8XWmNOCFipf8mU4/HeGg3cMr5IYs=";
+      sha256 = "sha256-qOgG+q76xTx6DyZSPYpFxg2+80B7FO+ZDHV2XQj+vII=";
     };
     dontUnpack = true;
     installPhase = ''
@@ -55,10 +47,10 @@
 
   t3code = pkgs.stdenv.mkDerivation rec {
     pname = "t3code";
-    version = "0.0.28";
+    version = "0.0.38";
     src = pkgs.fetchurl {
       url = "https://github.com/pingdotgg/t3code/releases/download/v${version}/T3-Code-${version}-arm64.zip";
-      sha256 = "sha256-DyPkIzpX6C7bewhE0a/RULmuf1tunQKsX3lzB9jaSz8=";
+      sha256 = "sha256-wKde9820O8ubcgiVwSVuG1BRs5jFwX+Jp4xTOE5KQz4=";
     };
     nativeBuildInputs = [
       pkgs.unzip
@@ -77,10 +69,10 @@
 
   t3codeNightly = pkgs.stdenv.mkDerivation rec {
     pname = "t3code-nightly";
-    version = "0.0.35-nightly.20260826.1195";
+    version = "0.0.39-nightly.20260902.1257";
     src = pkgs.fetchurl {
       url = "https://github.com/pingdotgg/t3code/releases/download/v${version}/T3-Code-${version}-arm64.zip";
-      sha256 = "sha256-s2qUTajx7cQzsQmLEETBmG14yFqN5rh8bhdrfjkWqqk=";
+      sha256 = "sha256-u+oW2BLwIYrzzyIrlLPheolwhMmrqHqzS0xQkiXiva0=";
     };
     nativeBuildInputs = [
       pkgs.unzip
