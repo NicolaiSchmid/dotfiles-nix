@@ -13,6 +13,15 @@ scripts.
 - `keyboard/`: custom keyboard layout assets.
 - `rayscripts/`: helper scripts installed from the flake.
 
+## Agent Infrastructure
+
+The production agent environment is defined in `~/git/personal/agent-infra`:
+Black is the bare-metal host, Atlas is its workload VM, T3 Code runs natively on
+Atlas, and Hermes (the assistant called Domovoi) runs there in Docker. The
+`darwin/agents/` directory in this repository contains shared NixOS modules
+imported by `agent-infra`; do not treat the legacy `nixosConfigurations.domovoi`
+output as a currently deployed machine.
+
 ## Commands
 
 From `darwin/`:

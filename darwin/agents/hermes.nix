@@ -3,7 +3,7 @@
 # TERMINAL_ENV=ssh, so Hermes uses the SAME CLIs (claude/codex/bun), /workspace
 # and $HOME as t3code. The container is just Hermes' engine; ssh is its hands.
 # Configure providers/messaging with `hermes setup` (Codex/ChatGPT subscription
-# via `hermes model`; Slack via the dashboard, served on the domovoi node).
+# via `hermes model`; Slack via the dashboard on the main workload node).
 { config, pkgs, lib, ... }:
 let
   dataDir = "/srv/agents-state/hermes";
@@ -15,7 +15,8 @@ in
   virtualisation.docker.enable = true;
 
   # `hermes ...` on the VM host runs the CLI inside the container, so
-  # `hermes model` / `hermes setup` work over a plain `ssh domovoi`.
+  # `hermes model` / `hermes setup` work over SSH to the workload host
+  # (currently Atlas).
   environment.systemPackages = [
     (pkgs.writeShellScriptBin "hermes" ''exec ${docker} exec -it hermes hermes "$@"'')
   ];
@@ -94,9 +95,9 @@ in
   # too via HERMES_DASHBOARD=1 — see the hermes service above. A second
   # container would spawn a duplicate gateway off the shared /opt/data.)
 
-  # Serve the dashboard on the domovoi tailnet node (domovoi IS the assistant).
+  # Serve the dashboard through the workload host's primary Tailscale node.
   systemd.services.hermes-serve = {
-    description = "Tailscale Serve (domovoi node) -> Hermes dashboard";
+    description = "Tailscale Serve (primary node) -> Hermes dashboard";
     wantedBy = [ "multi-user.target" ];
     after = [
       "tailscaled.service"

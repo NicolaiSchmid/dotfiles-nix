@@ -54,8 +54,9 @@
       hostConfig = import ./host.nix;
     in
     {
-      # Agents VM on the wasc bare-metal host (x86_64-linux). Provisioned by
-      # compose-services (ansible/agents-vm.yml); see darwin/agents/.
+      # Legacy standalone agent-VM output retained for module compatibility.
+      # Production runs on Atlas and is deployed from the agent-infra flake;
+      # the shared service modules still live under darwin/agents/.
       nixosConfigurations.domovoi = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };

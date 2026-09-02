@@ -1,8 +1,8 @@
 # t3code's web UI gets its own Tailscale node/hostname (Serve is per-node):
 #   t3code.<tailnet>  -> t3code UI (127.0.0.1:3773)
-# The Hermes dashboard is served on the main `domovoi` node itself (domovoi IS
-# the assistant), see hermes.nix. Shares the reusable authkey. Serving needs
-# HTTPS Certificates enabled on the tailnet; until then it retries.
+# The Hermes dashboard is served through the workload host's primary Tailscale
+# node; “Domovoi” is the assistant name, not the host. See hermes.nix. Serving
+# needs HTTPS Certificates enabled on the tailnet; until then it retries.
 { config, pkgs, lib, ... }:
 let
   ts = "${pkgs.tailscale}/bin/tailscale";
