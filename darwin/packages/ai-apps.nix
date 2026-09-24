@@ -2,14 +2,14 @@
 {
   codex = pkgs.stdenv.mkDerivation rec {
     pname = "codex";
-    version = "0.153.4";
+    version = "0.156.1";
     src = pkgs.fetchurl {
       url = "https://github.com/openai/codex/releases/download/rust-v${version}/codex-aarch64-apple-darwin.tar.gz";
-      sha256 = "sha256-jPkR6mdlI7+yEh7FYYSNKrpWSJCtU2202KM1PyuYULE=";
+      sha256 = "sha256-K9ZK8U3t1HeV8va/1dElz3kZmswse6IiFE4IEnERpco=";
     };
     codeModeHostSrc = pkgs.fetchurl {
       url = "https://github.com/openai/codex/releases/download/rust-v${version}/codex-code-mode-host-aarch64-apple-darwin.tar.gz";
-      sha256 = "sha256-Ramw/fU7mLhaa7keF13ZDpYTKKehT7UKQJAiBRmd8d8=";
+      sha256 = "sha256-JiXQI+K24D0rzEN6Pg4IMcJdPHItKFRjio50kh/3m9k=";
     };
     unpackPhase = ''
       tar -xzf "$src"
@@ -25,10 +25,10 @@
 
   opencode = pkgs.stdenv.mkDerivation rec {
     pname = "opencode";
-    version = "1.18.4";
+    version = "1.18.32";
     src = pkgs.fetchurl {
       url = "https://github.com/anomalyco/opencode/releases/download/v${version}/opencode-darwin-arm64.zip";
-      sha256 = "sha256-BPuIG2MrMjxxLf2m3LvG/Oc2OU8HunYXblLWZlkl1OY=";
+      sha256 = "sha256-+mQ/k0AcE1CNjVE3gOVM6cwBID1QERS+m4jWJAi4EB8=";
     };
     nativeBuildInputs = [ pkgs.unzip ];
     unpackPhase = "unzip $src";
@@ -41,10 +41,10 @@
 
   claude-code = pkgs.stdenv.mkDerivation rec {
     pname = "claude-code";
-    version = "2.1.261";
+    version = "2.1.281";
     src = pkgs.fetchurl {
       url = "https://downloads.claude.ai/claude-code-releases/${version}/darwin-arm64/claude";
-      sha256 = "sha256-Xv7K/yMbeYvjxm3vm+VBg2I7MouA6u8X+TxDmHAk6Co=";
+      sha256 = "sha256-qSKYH287VaJR75+duqBiGl+Zy8tcpn+KeXR2zPyD9iY=";
     };
     dontUnpack = true;
     installPhase = ''
@@ -112,4 +112,13 @@
       chmod +x "$out/Applications/Codex.app/Contents/MacOS/Codex"
     '';
   };
+
+  cursor-cli = pkgs.cursor-cli.overrideAttrs (_old: rec {
+    version = "0-unstable-2026-09-23";
+    cursorRelease = "2026.09.23-86fc751";
+    src = pkgs.fetchurl {
+      url = "https://downloads.cursor.com/lab/${cursorRelease}/darwin/arm64/agent-cli-package.tar.gz";
+      hash = "sha256-+j/hPVWJxYb/EyokwW7qlvuO/eiK/e/dzRHYD6GZ86U=";
+    };
+  });
 }

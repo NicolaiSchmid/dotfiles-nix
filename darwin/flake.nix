@@ -97,6 +97,7 @@
                 t3code
                 t3codeNightly
                 codexDesktop
+                cursor-cli
                 ;
             in
             {
