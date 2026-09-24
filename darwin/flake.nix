@@ -381,6 +381,11 @@
                     };
                   };
 
+                  # Apps are linked directly into ~/Applications below; the extra
+                  # "Home Manager Apps" folder only produced duplicate launcher
+                  # entries that went stale after every rebuild.
+                  targets.darwin.linkApps.enable = false;
+
                   home.file = {
                     "Applications/T3 Code.app" = {
                       source = "${t3code}/Applications/T3 Code.app";
