@@ -55,10 +55,10 @@
 
   t3code = pkgs.stdenv.mkDerivation rec {
     pname = "t3code";
-    version = "0.0.38";
+    version = "0.0.42";
     src = pkgs.fetchurl {
       url = "https://github.com/pingdotgg/t3code/releases/download/v${version}/T3-Code-${version}-arm64.zip";
-      sha256 = "sha256-wKde9820O8ubcgiVwSVuG1BRs5jFwX+Jp4xTOE5KQz4=";
+      sha256 = "sha256-BmOznpeQ8Hayp0uUReEXziu26CTQYZxXjoCLS6crRjc=";
     };
     nativeBuildInputs = [
       pkgs.unzip
@@ -77,10 +77,10 @@
 
   t3codeNightly = pkgs.stdenv.mkDerivation rec {
     pname = "t3code-nightly";
-    version = "0.0.39-nightly.20260905.1285";
+    version = "0.0.43-nightly.20260923.2150";
     src = pkgs.fetchurl {
       url = "https://github.com/pingdotgg/t3code/releases/download/v${version}/T3-Code-${version}-arm64.zip";
-      sha256 = "sha256-LGJUBYWHARxyOmGLQAIMeVJd2Gg9pVS7XYjtrZG6v4A=";
+      sha256 = "sha256-vTs9DHvSB3pssi96qk/uWMf1PK7V6nnv6KrNvXNkEUk=";
     };
     nativeBuildInputs = [
       pkgs.unzip
