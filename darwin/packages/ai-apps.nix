@@ -2,14 +2,14 @@
 {
   codex = pkgs.stdenv.mkDerivation rec {
     pname = "codex";
-    version = "0.156.1";
+    version = "0.160.0";
     src = pkgs.fetchurl {
       url = "https://github.com/openai/codex/releases/download/rust-v${version}/codex-aarch64-apple-darwin.tar.gz";
-      sha256 = "sha256-K9ZK8U3t1HeV8va/1dElz3kZmswse6IiFE4IEnERpco=";
+      sha256 = "sha256-B8PHyjdqj3kRFTQvUxON2jfpfPopuBJdBlLZN4SJS10=";
     };
     codeModeHostSrc = pkgs.fetchurl {
       url = "https://github.com/openai/codex/releases/download/rust-v${version}/codex-code-mode-host-aarch64-apple-darwin.tar.gz";
-      sha256 = "sha256-JiXQI+K24D0rzEN6Pg4IMcJdPHItKFRjio50kh/3m9k=";
+      sha256 = "sha256-3HD7x26dyuWuPVQkgIyOfC314NtKyCfd1PvjOQFarXU=";
     };
     unpackPhase = ''
       tar -xzf "$src"
@@ -41,10 +41,10 @@
 
   claude-code = pkgs.stdenv.mkDerivation rec {
     pname = "claude-code";
-    version = "2.1.281";
+    version = "2.1.288";
     src = pkgs.fetchurl {
       url = "https://downloads.claude.ai/claude-code-releases/${version}/darwin-arm64/claude";
-      sha256 = "sha256-qSKYH287VaJR75+duqBiGl+Zy8tcpn+KeXR2zPyD9iY=";
+      sha256 = "sha256-u+kwY/egh5oQIbKJHlyTVOWzuYQz4y7+Z1D3cQr+11A=";
     };
     dontUnpack = true;
     installPhase = ''
@@ -55,10 +55,10 @@
 
   t3code = pkgs.stdenv.mkDerivation rec {
     pname = "t3code";
-    version = "0.0.42";
+    version = "0.0.45";
     src = pkgs.fetchurl {
       url = "https://github.com/pingdotgg/t3code/releases/download/v${version}/T3-Code-${version}-arm64.zip";
-      sha256 = "sha256-BmOznpeQ8Hayp0uUReEXziu26CTQYZxXjoCLS6crRjc=";
+      sha256 = "sha256-J+48WUpKEOjLrWvXJJlymsGhBtkPHDn7igP9kwpbvQY=";
     };
     nativeBuildInputs = [
       pkgs.unzip
@@ -77,10 +77,10 @@
 
   t3codeNightly = pkgs.stdenv.mkDerivation rec {
     pname = "t3code-nightly";
-    version = "0.0.43-nightly.20260923.2150";
+    version = "0.0.46-nightly.20261003.2623";
     src = pkgs.fetchurl {
       url = "https://github.com/pingdotgg/t3code/releases/download/v${version}/T3-Code-${version}-arm64.zip";
-      sha256 = "sha256-vTs9DHvSB3pssi96qk/uWMf1PK7V6nnv6KrNvXNkEUk=";
+      sha256 = "sha256-NX68SsAYe3q6FyOmAHm9Ww8vhf6dBaPE2XtwKX9Key8=";
     };
     nativeBuildInputs = [
       pkgs.unzip
@@ -97,19 +97,23 @@
     '';
   };
 
+  # Since 2026-07 the Codex desktop app ships as "ChatGPT.app" (bundle id
+  # still com.openai.codex; the brew `chatgpt` cask is now ChatGPT Classic).
+  # Keep installing it as Codex.app so the ~/Applications link name stays
+  # stable and does not collide with /Applications/ChatGPT.app.
   codexDesktop = pkgs.stdenv.mkDerivation rec {
     pname = "codex-desktop";
-    version = "26.527.31326";
+    version = "26.930.31730";
     src = pkgs.fetchurl {
-      url = "https://persistent.oaistatic.com/codex-app-prod/Codex-darwin-arm64-${version}.zip";
-      sha256 = "sha256-z6oU1qioqN5AMCj5J/a2S6ZpLDyXWer+wP0zdkEkudI=";
+      url = "https://persistent.oaistatic.com/codex-app-prod/ChatGPT-darwin-arm64-${version}.zip";
+      sha256 = "sha256-v9pmGnycpE2sMWgTQFjdYAeUfN4xit431XDEhDKfbUE=";
     };
     nativeBuildInputs = [ pkgs.unzip ];
     unpackPhase = "unzip $src";
     installPhase = ''
       mkdir -p "$out/Applications"
-      cp -R "Codex.app" "$out/Applications/Codex.app"
-      chmod +x "$out/Applications/Codex.app/Contents/MacOS/Codex"
+      cp -R "ChatGPT.app" "$out/Applications/Codex.app"
+      chmod +x "$out/Applications/Codex.app/Contents/MacOS/ChatGPT"
     '';
   };
 
