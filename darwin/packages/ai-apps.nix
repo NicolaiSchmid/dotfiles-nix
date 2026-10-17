@@ -2,14 +2,14 @@
 {
   codex = pkgs.stdenv.mkDerivation rec {
     pname = "codex";
-    version = "0.160.0";
+    version = "0.163.0";
     src = pkgs.fetchurl {
       url = "https://github.com/openai/codex/releases/download/rust-v${version}/codex-aarch64-apple-darwin.tar.gz";
-      sha256 = "sha256-B8PHyjdqj3kRFTQvUxON2jfpfPopuBJdBlLZN4SJS10=";
+      sha256 = "sha256-YcTZqSUhvbQrDB2fh8Zz9tpiigbeWUXL3ZoAEGMvbRA=";
     };
     codeModeHostSrc = pkgs.fetchurl {
       url = "https://github.com/openai/codex/releases/download/rust-v${version}/codex-code-mode-host-aarch64-apple-darwin.tar.gz";
-      sha256 = "sha256-3HD7x26dyuWuPVQkgIyOfC314NtKyCfd1PvjOQFarXU=";
+      sha256 = "sha256-Lij0mkdnqXWGhDySaSuWSBvnTYNxmbSQOPcxzsiOmUE=";
     };
     unpackPhase = ''
       tar -xzf "$src"
@@ -41,10 +41,10 @@
 
   claude-code = pkgs.stdenv.mkDerivation rec {
     pname = "claude-code";
-    version = "2.1.288";
+    version = "2.1.302";
     src = pkgs.fetchurl {
       url = "https://downloads.claude.ai/claude-code-releases/${version}/darwin-arm64/claude";
-      sha256 = "sha256-u+kwY/egh5oQIbKJHlyTVOWzuYQz4y7+Z1D3cQr+11A=";
+      sha256 = "sha256-UmLOnehiQ/7Q0h7cObJxVV1WeA0BEuKxlEOf4cZmLTc=";
     };
     dontUnpack = true;
     installPhase = ''
@@ -55,10 +55,10 @@
 
   t3code = pkgs.stdenv.mkDerivation rec {
     pname = "t3code";
-    version = "0.0.45";
+    version = "0.1.0";
     src = pkgs.fetchurl {
       url = "https://github.com/pingdotgg/t3code/releases/download/v${version}/T3-Code-${version}-arm64.zip";
-      sha256 = "sha256-J+48WUpKEOjLrWvXJJlymsGhBtkPHDn7igP9kwpbvQY=";
+      sha256 = "sha256-DSGwdtPRsmbKS2+0MuP6eZgPj8fqn4hTmpNM12YqX6g=";
     };
     nativeBuildInputs = [
       pkgs.unzip
@@ -69,18 +69,18 @@
     unpackPhase = "unzip $src";
     installPhase = ''
       mkdir -p "$out/Applications" "$out/bin"
-      cp -R "T3 Code (Alpha).app" "$out/Applications/T3 Code.app"
-      chmod +x "$out/Applications/T3 Code.app/Contents/MacOS/T3 Code (Alpha)"
-      makeWrapper "$out/Applications/T3 Code.app/Contents/MacOS/T3 Code (Alpha)" "$out/bin/t3code"
+      cp -R "T3 Code (Beta).app" "$out/Applications/T3 Code.app"
+      chmod +x "$out/Applications/T3 Code.app/Contents/MacOS/T3 Code (Beta)"
+      makeWrapper "$out/Applications/T3 Code.app/Contents/MacOS/T3 Code (Beta)" "$out/bin/t3code"
     '';
   };
 
   t3codeNightly = pkgs.stdenv.mkDerivation rec {
     pname = "t3code-nightly";
-    version = "0.0.46-nightly.20261003.2623";
+    version = "0.1.1-nightly.20261017.3238";
     src = pkgs.fetchurl {
       url = "https://github.com/pingdotgg/t3code/releases/download/v${version}/T3-Code-${version}-arm64.zip";
-      sha256 = "sha256-NX68SsAYe3q6FyOmAHm9Ww8vhf6dBaPE2XtwKX9Key8=";
+      sha256 = "sha256-qBfAIQjZffogxoCjdlzycMR7QuxB8Kk6y33nPQv8KbA=";
     };
     nativeBuildInputs = [
       pkgs.unzip
