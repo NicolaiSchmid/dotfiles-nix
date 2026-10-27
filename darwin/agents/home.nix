@@ -9,7 +9,10 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "hm-bak"; # take over the bootstrap ~/.zshrc stub
-    users.nicolai = import ./home-shell.nix;
+    users.nicolai.imports = [
+      ./home-shell.nix
+      ./prometheus-client.nix
+    ];
     users.root = import ./home-shell.nix;
   };
 }

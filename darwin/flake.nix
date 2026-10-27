@@ -196,6 +196,7 @@
                     (pnpm.override { nodejs = nodejs_26; })
                     (yarn.override { nodejs = nodejs_26; })
                     gh # GitHub CLI
+                    (callPackage ./packages/ai-hub { }) # prometheus hub toggle
                     t3code
                     t3codeNightly
                     codexDesktop
