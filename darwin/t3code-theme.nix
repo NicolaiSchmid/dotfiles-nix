@@ -1,5 +1,7 @@
-# T3 Code appearance: the "Slate" dark theme (dark greys with a faint cool
-# tint instead of pure black; palette rules from vamoo #1286).
+# T3 Code appearance: the "June" dark theme, the neutral-grey dark palette T3
+# shipped in June 2026 (v0.0.28): #161616 background, #1b1b1b cards, #242424
+# borders, #366ffb primary. Newer releases went to near-black (#0a0a0a).
+# `messageAction` is what T3 maps to --primary (switches, primary buttons).
 #
 # T3 keeps published themes in ~/.t3/userdata/themes/<id>.json and the active
 # one in settings.json (defaultTheme / defaultAppearance). Both are files the
@@ -9,7 +11,7 @@
 # t3code-themes/ to keep them.
 { pkgs, hostConfig, ... }:
 let
-  themeId = "slate";
+  themeId = "june";
   appearance = "dark";
   themeFile = ./t3code-themes + "/${themeId}.json";
   jq = "${pkgs.jq}/bin/jq";
