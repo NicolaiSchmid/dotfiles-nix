@@ -11,12 +11,12 @@ jobs:
       - uses: actions/checkout@v4
       - uses: DeterminateSystems/nix-installer-action@v17
       - name: Evaluate MacBook configuration
-        run: nix eval --raw path:./darwin#darwinConfigurations.nicolais-MacBook-Pro.system.drvPath
+        run: nix eval --raw ./darwin#darwinConfigurations.nicolais-MacBook-Pro.system.drvPath
       - name: Build and smoke test updated packages
         run: |
           nix build --impure --expr '
             let
-              flake = builtins.getFlake ("path:" + toString ./darwin);
+              flake = builtins.getFlake ("git+file://" + toString ./. + "?dir=darwin");
               pkgs = flake.inputs.nixpkgs.legacyPackages.aarch64-darwin;
               apps = import ./darwin/packages/ai-apps.nix { inherit pkgs; };
             in [ apps.codex apps.claude-code apps.t3code apps.t3codeNightly ]
