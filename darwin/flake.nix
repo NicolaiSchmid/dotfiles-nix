@@ -81,6 +81,7 @@
             }
           )
           ./work.nix
+          ./t3code-theme.nix
           (
             {
               config,
