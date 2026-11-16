@@ -2,14 +2,14 @@
 {
   codex = pkgs.stdenv.mkDerivation rec {
     pname = "codex";
-    version = "0.163.0";
+    version = "0.169.0";
     src = pkgs.fetchurl {
       url = "https://github.com/openai/codex/releases/download/rust-v${version}/codex-aarch64-apple-darwin.tar.gz";
-      sha256 = "sha256-YcTZqSUhvbQrDB2fh8Zz9tpiigbeWUXL3ZoAEGMvbRA=";
+      sha256 = "sha256-f0xJyAuuHQtONHrPzfEfqjR12Hrl5lpesSYdPDWBRe4=";
     };
     codeModeHostSrc = pkgs.fetchurl {
       url = "https://github.com/openai/codex/releases/download/rust-v${version}/codex-code-mode-host-aarch64-apple-darwin.tar.gz";
-      sha256 = "sha256-Lij0mkdnqXWGhDySaSuWSBvnTYNxmbSQOPcxzsiOmUE=";
+      sha256 = "sha256-1AsyD28laDXUCUcrfTvuYYonVJs/Phy4tx3GxW04J78=";
     };
     unpackPhase = ''
       tar -xzf "$src"
@@ -41,10 +41,10 @@
 
   claude-code = pkgs.stdenv.mkDerivation rec {
     pname = "claude-code";
-    version = "2.1.302";
+    version = "2.1.325";
     src = pkgs.fetchurl {
       url = "https://downloads.claude.ai/claude-code-releases/${version}/darwin-arm64/claude";
-      sha256 = "sha256-UmLOnehiQ/7Q0h7cObJxVV1WeA0BEuKxlEOf4cZmLTc=";
+      sha256 = "sha256-hFkP7+Yzi+kIf1gUth+aVMXyFSQWOkwSfLWoCOMQCfI=";
     };
     dontUnpack = true;
     installPhase = ''
@@ -55,10 +55,10 @@
 
   t3code = pkgs.stdenv.mkDerivation rec {
     pname = "t3code";
-    version = "0.1.0";
+    version = "0.1.9";
     src = pkgs.fetchurl {
       url = "https://github.com/pingdotgg/t3code/releases/download/v${version}/T3-Code-${version}-arm64.zip";
-      sha256 = "sha256-DSGwdtPRsmbKS2+0MuP6eZgPj8fqn4hTmpNM12YqX6g=";
+      sha256 = "sha256-A+9CbmasWxZwAYhZbBOU9EhYa4q3zDeeHjIbKfLEWX4=";
     };
     nativeBuildInputs = [
       pkgs.unzip
@@ -77,10 +77,10 @@
 
   t3codeNightly = pkgs.stdenv.mkDerivation rec {
     pname = "t3code-nightly";
-    version = "0.1.1-nightly.20261017.3238";
+    version = "0.1.10-nightly.20261116.4787";
     src = pkgs.fetchurl {
       url = "https://github.com/pingdotgg/t3code/releases/download/v${version}/T3-Code-${version}-arm64.zip";
-      sha256 = "sha256-qBfAIQjZffogxoCjdlzycMR7QuxB8Kk6y33nPQv8KbA=";
+      sha256 = "sha256-9s9FEfHmNo+8xPLPlnDhUYvxMnVwjSso1jDrwGgZzWA=";
     };
     nativeBuildInputs = [
       pkgs.unzip
