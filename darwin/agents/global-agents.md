@@ -23,3 +23,11 @@
 ## Git
 
 - always merge via github via merge commit (no squash merge)
+
+## Changes to this file (global AGENTS.md / CLAUDE.md)
+
+- When asked to change these global agent instructions, edit `darwin/agents/global-agents.md` in `NicolaiSchmid/dotfiles-nix` and deliver via PR + Nix deploy, never by editing the deployed `~/.codex/AGENTS.md` / `~/.claude/CLAUDE.md` symlinks:
+  - Write the change on a branch and open a PR.
+  - Merge it (merge commit) only if the user asked directly to merge.
+  - Deploy: bump `dotfiles-src` in `NicolaiSchmid/agent-infra` (PR, merge commit), then switch the machines to that agent-infra revision: `ssh root@atlas "nixos-rebuild switch --flake github:NicolaiSchmid/agent-infra/<rev>#atlas"`, `ssh root@black "nixos-rebuild switch --flake github:NicolaiSchmid/agent-infra/<rev>#black"`, `ssh -t nschmid10049@forge "sudo /run/current-system/sw/bin/darwin-rebuild switch --flake github:NicolaiSchmid/agent-infra/<rev>#forge"`, and on the Mac `sudo darwin-rebuild switch --flake ~/git/personal/dotfiles-nix/darwin#nicolais-MacBook-Pro` (see agent-infra `runbooks/agent-fleet-update-2026-11-16.md`).
+  - Run those switches over SSH yourself when you can; otherwise (sudo password, no access, not yet merged) remind the user with the exact commands, or schedule the follow-up with `schedule_task`.
