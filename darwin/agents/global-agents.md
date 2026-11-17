@@ -19,3 +19,7 @@
 ## Web pages
 
 - Use `pnpm dlx browse` when you need to fetch web pages with JS or need a full browser.
+
+## Git
+
+- always merge via github via merge commit (no squash merge)
